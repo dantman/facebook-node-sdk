@@ -1,2 +1,2 @@
 'use strict';
-module.exports = require('./lib/fb');
+module.exports = require('./lib/es5/fb');

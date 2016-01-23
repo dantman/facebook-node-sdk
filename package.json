@@ -18,11 +18,13 @@
     "url": "https://github.com/node-facebook/facebook-node-sdk.git"
   },
   "main": "./fb.js",
+  "jsnext:main": "./lib/es2015/fb.js",
   "scripts": {
     "lint": "eslint .",
-    "build": "babel src/ -d lib/",
-    "buildw": "babel -w src/ -d lib/",
-    "test": "npm run build && node ./node_modules/mocha/bin/mocha --recursive ",
+    "build": "npm run build-es5 && npm run build-es2015",
+    "build-es5": "babel src/ -d lib/es5/",
+    "build-es2015": "babel --no-babelrc --presets stage-0 --plugins transform-runtime src/ -d lib/es2015/",
+    "test": "npm run build && node ./node_modules/mocha/bin/mocha --recursive",
     "prepublish": "npm run build"
   },
   "dependencies": {
